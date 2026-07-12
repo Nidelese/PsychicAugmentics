@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Psychic Augmentics</name>
+  <author>Nidelese</author>
+  <packageId>Nidelese.PsychicAugmentics</packageId>
+  <description>Experimental eltex implants that channel psychic sensitivity into raw offensive power. Higher psychic sensitivity means more damage, tighter accuracy, faster fire rate, and shorter aim time — scaling without limit, but with diminishing returns.
+
+Requires Vanilla Psycasts Expanded for eltex.</description>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>VanillaExpanded.VPsycastsE</packageId>
+      <displayName>Vanilla Psycasts Expanded</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2842502659</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>VanillaExpanded.VPsycastsE</li>
+  </loadAfter>
+</ModMetaData>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Void-shard core: only loads with Anomaly active (see LoadFolders.xml).
+       Hits have a chance to warp the target with mutations from the table. -->
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreVoid</defName>
+    <label>void-shard core</label>
+    <description>An eltex sphere grown around a splinter of something that should not exist. Attuned to an eltex arm cannon, its bolts warp the flesh of whatever they strike in ways no one would choose. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Shard>1</Shard>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreVoid</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreVoid</defName>
+    <label>void-shard core</label>
+    <labelNoun>a void-shard core</labelNoun>
+    <description>An eltex void-shard core seated near the heart. Attuned to an eltex arm cannon, its bolts mutate whatever they strike.</description>
+    <defaultLabelColor>(0.35, 0.15, 0.5)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreVoid</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_VoidBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_VoidBolt</defName>
+    <label>void bolt</label>
+    <graphicData>
+      <color>(0.35, 0.15, 0.5)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_VoidBolt</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <DamageDef Class="PsychicAugmentics.PA_VoidDamageDef">
+    <defName>PA_VoidBolt</defName>
+    <label>void bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexVoid</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <mutationChance>0.15</mutationChance>
+    <mutations>
+      <li>
+        <hediff>Tentacle</hediff>
+        <part>Arm</part>
+        <weight>1</weight>
+      </li>
+      <li>
+        <hediff>FleshWhip</hediff>
+        <part>Arm</part>
+        <weight>1</weight>
+      </li>
+      <li>
+        <hediff>FleshmassLung</hediff>
+        <part>Lung</part>
+        <weight>1</weight>
+      </li>
+      <li>
+        <hediff>FleshmassStomach</hediff>
+        <part>Stomach</part>
+        <weight>1</weight>
+      </li>
+      <li>
+        <hediff>PsychicInjury</hediff>
+        <part>Brain</part>
+        <weight>0.5</weight>
+      </li>
+    </mutations>
+  </DamageDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreVoid</defName>
+    <label>install void-shard core</label>
+    <description>Seat a void-shard core beside the patient's heart.</description>
+    <jobString>Installing void-shard core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreVoid</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreVoid</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreVoid</addsHediff>
+    <uiIconThing>PA_CoreVoid</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreVoid</defName>
+    <label>remove void-shard core</label>
+    <description>Extract the void-shard core.</description>
+    <jobString>Removing void-shard core.</jobString>
+    <removesHediff>PA_Hediff_CoreVoid</removesHediff>
+    <uiIconThing>PA_CoreVoid</uiIconThing>
+  </RecipeDef>
+</Defs>

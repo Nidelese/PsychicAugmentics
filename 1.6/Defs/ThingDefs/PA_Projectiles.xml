@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef>
+    <defName>PA_Projectile_EltexBolt</defName>
+    <label>eltex bolt</label>
+    <thingClass>Bullet</thingClass>
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(0.25, 0.55)</drawSize>
+      <color>(0.75, 0.55, 1.0)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_EltexBolt</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+</Defs>

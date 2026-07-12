@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Faraday cage: sternum implant with a toggle gizmo. Grounded, it CAPS
+       psychic sensitivity at an absolute 15% — total shielding against
+       psychic drones, lances and hostile psycasts regardless of how much
+       sensitivity is stacked underneath, at the cost of the bearer's own
+       eltex weaponry and psycasting until reopened. -->
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>PA_ImplantFaradayCage</defName>
+    <label>eltex faraday cage</label>
+    <description>A conductive eltex-alloy lattice anchored to the sternum and woven through the ribcage. Grounded, it shorts incoming psychic influence around the wearer's nervous system — psychic drones, lances and hostile psycasts lose most of their grip. The same grounding chokes the wearer's own psychic sensitivity, weakening psycasting and eltex weaponry until the cage is reopened.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>PA_InstallFaradayCage</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>PA/FaradayCage</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+    <costList>
+      <VPE_Eltex>4</VPE_Eltex>
+      <Plasteel>12</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <statBases>
+      <WorkToMake>28000</WorkToMake>
+      <Mass>1</Mass>
+      <MarketValue>900</MarketValue>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+      <researchPrerequisite>PA_EltexAugmentics</researchPrerequisite>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <displayPriority>300</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PA_Hediff_FaradayCage</defName>
+    <label>eltex faraday cage</label>
+    <labelNoun>an eltex faraday cage</labelNoun>
+    <description>A conductive lattice anchored to the sternum. While grounded it shorts psychic influence around the nervous system entirely, capping psychic sensitivity at a trickle no matter how attuned the bearer — protection and impairment in equal measure.</description>
+    <descriptionHyperlinks><ThingDef>PA_ImplantFaradayCage</ThingDef></descriptionHyperlinks>
+    <defaultLabelColor>(0.55, 0.61, 0.69)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_ImplantFaradayCage</spawnThingOnRemoved>
+    <initialSeverity>0.1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <label>open</label>
+      </li>
+      <li>
+        <label>grounded</label>
+        <minSeverity>0.9</minSeverity>
+        <!-- effect is an absolute cap via StatPart_FaradayCage, not a
+             stage statFactor: factors fail against VPE-scale sensitivity -->
+      </li>
+    </stages>
+    <comps>
+      <li Class="PsychicAugmentics.HediffCompProperties_FaradayToggle">
+        <groundedSensitivityCap>0.15</groundedSensitivityCap>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>PA_InstallFaradayCage</defName>
+    <label>install eltex faraday cage</label>
+    <description>Anchor an eltex faraday cage to the patient's sternum.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PA_ImplantFaradayCage</ThingDef>
+      <HediffDef>PA_Hediff_FaradayCage</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing eltex faraday cage.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_ImplantFaradayCage</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_ImplantFaradayCage</li></thingDefs></fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Sternum</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PA_Hediff_FaradayCage</addsHediff>
+    <uiIconThing>PA_ImplantFaradayCage</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>PA_RemoveFaradayCage</defName>
+    <label>remove eltex faraday cage</label>
+    <description>Extract the eltex faraday cage.</description>
+    <jobString>Removing eltex faraday cage.</jobString>
+    <removesHediff>PA_Hediff_FaradayCage</removesHediff>
+    <uiIconThing>PA_ImplantFaradayCage</uiIconThing>
+    <appliedOnFixedBodyParts>
+      <li>Sternum</li>
+    </appliedOnFixedBodyParts>
+  </RecipeDef>
+</Defs>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Core spheres: fabricator-crafted eltex orbs that socket (surgically,
+       near the heart) into a bearer who has an eltex arm cannon. One core
+       attunes at a time; installing another ejects the previous sphere. -->
+  <ThingDef Name="PA_CoreBase" ParentName="BodyPartBionicBase" Abstract="True">
+    <statBases>
+      <WorkToMake>35000</WorkToMake>
+      <Mass>0.5</Mass>
+      <MarketValue>1400</MarketValue>
+    </statBases>
+    <costList>
+      <VPE_Eltex>6</VPE_Eltex>
+      <Plasteel>10</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <!-- Full block: overriding recipeMaker does not reliably merge with the
+         parent's, so a partial override loses recipeUsers and the generated
+         recipe attaches to no bench -->
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+      <researchPrerequisite>PA_EltexAugmentics</researchPrerequisite>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <displayPriority>300</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreTox</defName>
+    <label>tox core</label>
+    <description>An eltex sphere swirling with green sediment. Attuned to an eltex arm cannon, its bolts seep necrotizing poison that eats a fraction of the victim's living mass each second. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <!-- Flavor ingredient: only demanded when Biotech provides wastepacks -->
+    <costList>
+      <Wastepack MayRequire="Ludeon.RimWorld.Biotech">5</Wastepack>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreTox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreHeat</defName>
+    <label>heat core</label>
+    <description>An eltex sphere lit from within by a slow orange churn. Forged around a psylink neuroformer, whose archotech lattice channels the bearer's psychic entropy: attuned to an eltex arm cannon, every bolt vents a measure of that entropy into the target as searing heat — a psycaster's pressure valve. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <!-- PsychicAmplifier = psylink neuroformer (legacy defName); market
+         value raised so the core is worth more than its rarest part -->
+    <statBases>
+      <MarketValue>3600</MarketValue>
+    </statBases>
+    <costList>
+      <PsychicAmplifier>1</PsychicAmplifier>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreHeat</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreLightning</defName>
+    <label>lightning core</label>
+    <description>An eltex sphere crawling with hairline arcs. Its discharge capacitors are cannibalized from an EMP grenade. Attuned to an eltex arm cannon, its bolts discharge electromagnetic pulses on impact — stunning mechanoids and shorting shield belts, though flesh barely notices. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Weapon_GrenadeEMP>1</Weapon_GrenadeEMP>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreLightning</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreWater</defName>
+    <label>water of tranquility core</label>
+    <description>An eltex sphere holding a bead of impossibly still water, cradled in a carved jade housing. Attuned to an eltex arm cannon, its bolts knit living flesh instead of tearing it — fired at allies, they close fresh wounds. Only living tissue responds; scars, disease and machines do not. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Jade>20</Jade>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreWater</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreMercury</defName>
+    <label>mercury core</label>
+    <description>An eltex sphere sheathed in a film of liquid metal — luciferium mechanites, decanted from their serum and retrained to mend machines instead of flesh. Attuned to an eltex arm cannon, its bolts reknit metal and stone — mending mechanoids and repairing structures from a distance. Living flesh does not respond. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Luciferium>2</Luciferium>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreMercury</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreArcane</defName>
+    <label>arcane core</label>
+    <description>An eltex sphere that is subtly difficult to look away from. Attuned to an eltex arm cannon, its bolts bend faintly toward their targets in flight, converting a portion of would-be misses into hits. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <!-- Flavor ingredient: raw magicyte, only when RimWorld of Magic is loaded -->
+    <costList>
+      <RawMagicyte MayRequire="Torann.ARimworldOfMagic">20</RawMagicyte>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreArcane</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreChaos</defName>
+    <label>chaos core</label>
+    <description>An eltex sphere that never shows the same red twice, wrapped around the payload of a high-explosive shell. Attuned to an eltex arm cannon, its bolts detonate on impact and set the ground alight. The fire does not distinguish friend from foe, nor your crops from their cover. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Shell_HighExplosive>1</Shell_HighExplosive>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreChaos</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreCryo</defName>
+    <label>cryo core</label>
+    <description>An eltex sphere cold enough to frost the air around it, its heart suspended in a neutroamine coolant bath. Attuned to an eltex arm cannon, its bolts leach warmth and speed from whatever they strike — each hit slowing movement and manipulation further, though the chill fades quickly. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <Neutroamine>10</Neutroamine>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreCryo</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+</Defs>

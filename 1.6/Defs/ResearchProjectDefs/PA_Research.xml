@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Gate above Fabrication: the cannon at baseline matches a charge
+       rifle, but scales with sensitivity, takes cores, and leaves the
+       weapon slot free — it should cost strictly more research than the
+       rifle it outclasses. -->
+  <ResearchProjectDef>
+    <defName>PA_EltexAugmentics</defName>
+    <label>eltex augmentics</label>
+    <description>Weaponized eltex implants: emitter assemblies that couple to the nervous system and convert psychic sensitivity into directed force, and the elemental cores that retune them.</description>
+    <baseCost>3000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>Fabrication</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>17.00</researchViewX>
+    <researchViewY>2.40</researchViewY>
+  </ResearchProjectDef>
+
+  <!-- Vision-induction branch: the recreational machine first, its darker
+       sibling as a deeper node — you learn to project visions before you
+       learn to weaponize them. -->
+  <ResearchProjectDef>
+    <defName>PA_VisionInduction</defName>
+    <label>psychic vision induction</label>
+    <description>Eltex resonance chambers that project engineered sensory experiences directly into a mind. The recreational applications are obvious; other applications are a further research project.</description>
+    <baseCost>1200</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>PA_EltexAugmentics</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>18.00</researchViewX>
+    <researchViewY>2.40</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>PA_TraumaticAwakening</defName>
+    <label>traumatic psionic awakening</label>
+    <description>Remove the vision inducer's safety limiters and replace reverie with engineered horror. Sufficient psychological trauma can crack a dormant mind open to the psychic field — a fact this research does not so much discover as decide to use.</description>
+    <baseCost>2000</baseCost>
+    <techLevel>Spacer</techLevel>
+    <prerequisites>
+      <li>PA_VisionInduction</li>
+    </prerequisites>
+    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+    <requiredResearchFacilities>
+      <li>MultiAnalyzer</li>
+    </requiredResearchFacilities>
+    <researchViewX>19.00</researchViewX>
+    <researchViewY>2.40</researchViewY>
+  </ResearchProjectDef>
+</Defs>

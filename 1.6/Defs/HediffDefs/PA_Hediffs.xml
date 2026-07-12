@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Eltex arm cannon: implant (does not replace the arm) granting a built-in
+       ranged verb. ImplantHediffBase provides Hediff_Implant semantics:
+       counts as implant for price/ideo purposes, proper removal behavior.
+       All combat stats scale with psychic sensitivity as uncapped power laws
+       (s^exponent) — see Verb_EltexCannon for the verb stats and
+       DamageWorker_EltexBolt for per-bolt damage. -->
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PA_Hediff_EltexArmCannon</defName>
+    <label>eltex arm cannon</label>
+    <labelNoun>an eltex arm cannon</labelNoun>
+    <description>A precision eltex emitter assembly integrated into the arm. It focuses the bearer's psychic sensitivity into concentrated bolts of piercing force. Pawns with higher psychic sensitivity fire harder, faster, and more accurately, with no upper limit — while those with suppressed sensitivity may find the cannon barely functional.</description>
+    <hediffClass>PsychicAugmentics.Hediff_EltexCannon</hediffClass>
+    <descriptionHyperlinks><ThingDef>PA_ImplantEltexArmCannon</ThingDef></descriptionHyperlinks>
+    <defaultLabelColor>(0.75, 0.55, 1.0)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_ImplantEltexArmCannon</spawnThingOnRemoved>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <verbs>
+          <li Class="PsychicAugmentics.EltexCannonVerbProps">
+            <verbClass>PsychicAugmentics.Verb_EltexCannon</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <label>eltex burst</label>
+            <defaultProjectile>PA_Projectile_EltexBolt</defaultProjectile>
+            <warmupTime>1.5</warmupTime>
+            <defaultCooldownTime>2.0</defaultCooldownTime>
+            <range>25</range>
+            <burstShotCount>3</burstShotCount>
+            <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+            <soundCast>Shot_ChargeRifle</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>6</muzzleFlashScale>
+            <accuracyTouch>0.95</accuracyTouch>
+            <accuracyShort>0.85</accuracyShort>
+            <accuracyMedium>0.65</accuracyMedium>
+            <accuracyLong>0.40</accuracyLong>
+            <!-- Sensitivity exponents, tunable per stat. Baseline is
+                 sensitivity 1.0; curves are uncapped with diminishing
+                 returns. Burst count (and bolt damage, on the DamageDef)
+                 carry the growth at extreme sensitivity. -->
+            <burstExponent>0.50</burstExponent>
+            <fireRateExponent>0.35</fireRateExponent>
+            <aimExponent>0.40</aimExponent>
+            <cooldownExponent>0.30</cooldownExponent>
+            <accuracyExponent>0.50</accuracyExponent>
+            <minSensitivity>0.05</minSensitivity>
+          </li>
+        </verbs>
+      </li>
+      <!-- auto-mend toggle; gizmo only appears while a mending core
+           (water of tranquility, mercury) is attuned -->
+      <li Class="PsychicAugmentics.HediffCompProperties_AutoMendToggle"/>
+    </comps>
+  </HediffDef>
+</Defs>

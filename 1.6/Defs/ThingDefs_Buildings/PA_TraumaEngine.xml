@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>PA_TraumaEngine</defName>
+    <label>psychic trauma engine</label>
+    <description>An eltex resonance chamber that subjects an occupant to engineered psychic hallucinations, attempting to shock dormant psionic potential awake. Some fictions call it trauma-forging; the manual calls it "guided neural recalibration". The subject relives the visions for days. Everyone in the colony hears the sessions.</description>
+    <thingClass>PsychicAugmentics.Building_TraumaEngine</thingClass>
+    <graphicData>
+      <texPath>PA/TraumaEngine</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <size>(2, 2)</size>
+    <rotatable>false</rotatable>
+    <designationCategory>Misc</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <VPE_Eltex>5</VPE_Eltex>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <researchPrerequisites>
+      <li>PA_TraumaticAwakening</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_TraumaEngineExtension">
+        <psylinkChance>0.25</psylinkChance>
+        <durationTicks>5000</durationTicks>
+      </li>
+    </modExtensions>
+  </ThingDef>
+</Defs>

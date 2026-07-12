@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Sharp-category psychic damage. The custom worker multiplies the amount
+       by the firing pawn's sensitivity^exponent (uncapped, diminishing
+       returns) before calling vanilla injury logic. -->
+  <DamageDef Class="PsychicAugmentics.PA_EltexDamageDef">
+    <defName>PA_EltexBolt</defName>
+    <label>eltex bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexBolt</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <minSensitivity>0.05</minSensitivity>
+  </DamageDef>
+</Defs>

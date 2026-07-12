@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The subject: stacking, ~week-long. Repeat sessions while haunted
+       stack up to 5 deep — the dystopian cost of grinding for psylinks. -->
+  <ThoughtDef>
+    <defName>PA_TraumaEngineSubject</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>5</stackLimit>
+    <stackedEffectMultiplier>1</stackedEffectMultiplier>
+    <stages>
+      <li>
+        <label>psychic hallucinations</label>
+        <description>The machine peeled my mind open and made me watch. I still see them when I blink.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Vision inducer afterglow: modest, non-stacking, ~a day. Also serves
+       as the inspiration-roll cooldown in JobDriver_UseVisionInducer. -->
+  <ThoughtDef>
+    <defName>PA_PleasantVisions</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>pleasant visions</label>
+        <description>The machine showed me somewhere beautiful. The colors haven't quite faded yet.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Everyone else: flat -5, non-stacking (a fresh session refreshes it). -->
+  <ThoughtDef>
+    <defName>PA_ColonistTortured</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>a colonist was tortured</label>
+        <description>We strapped one of our own into that machine and listened through the walls.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

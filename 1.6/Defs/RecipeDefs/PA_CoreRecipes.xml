@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Cores seat near the heart. Crafting recipes come from each core
+       ThingDef's recipeMaker; these are surgery only. -->
+  <RecipeDef Name="PA_InstallCoreBase" ParentName="SurgeryInstallImplantBase" Abstract="True">
+    <appliedOnFixedBodyParts>
+      <li>Heart</li>
+    </appliedOnFixedBodyParts>
+    <!-- Seating a psychically active sphere beside the heart: riskier than
+         a standard implant. Skill floor stays vanilla (5); the danger comes
+         from setup quality, like all RimWorld surgery. -->
+    <surgerySuccessChanceFactor>0.9</surgerySuccessChanceFactor>
+  </RecipeDef>
+
+  <RecipeDef Name="PA_RemoveCoreBase" ParentName="SurgeryRemoveImplantBase" Abstract="True">
+    <appliedOnFixedBodyParts>
+      <li>Heart</li>
+    </appliedOnFixedBodyParts>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreTox</defName>
+    <label>install tox core</label>
+    <description>Seat a tox core beside the patient's heart.</description>
+    <jobString>Installing tox core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreTox</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreTox</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreTox</addsHediff>
+    <uiIconThing>PA_CoreTox</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreTox</defName>
+    <label>remove tox core</label>
+    <description>Extract the tox core.</description>
+    <jobString>Removing tox core.</jobString>
+    <removesHediff>PA_Hediff_CoreTox</removesHediff>
+    <uiIconThing>PA_CoreTox</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreHeat</defName>
+    <label>install heat core</label>
+    <description>Seat a heat core beside the patient's heart.</description>
+    <jobString>Installing heat core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreHeat</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreHeat</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreHeat</addsHediff>
+    <uiIconThing>PA_CoreHeat</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreHeat</defName>
+    <label>remove heat core</label>
+    <description>Extract the heat core.</description>
+    <jobString>Removing heat core.</jobString>
+    <removesHediff>PA_Hediff_CoreHeat</removesHediff>
+    <uiIconThing>PA_CoreHeat</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreLightning</defName>
+    <label>install lightning core</label>
+    <description>Seat a lightning core beside the patient's heart.</description>
+    <jobString>Installing lightning core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreLightning</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreLightning</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreLightning</addsHediff>
+    <uiIconThing>PA_CoreLightning</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreLightning</defName>
+    <label>remove lightning core</label>
+    <description>Extract the lightning core.</description>
+    <jobString>Removing lightning core.</jobString>
+    <removesHediff>PA_Hediff_CoreLightning</removesHediff>
+    <uiIconThing>PA_CoreLightning</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreWater</defName>
+    <label>install water of tranquility core</label>
+    <description>Seat a water of tranquility core beside the patient's heart.</description>
+    <jobString>Installing water of tranquility core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreWater</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreWater</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreWater</addsHediff>
+    <uiIconThing>PA_CoreWater</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreWater</defName>
+    <label>remove water of tranquility core</label>
+    <description>Extract the water of tranquility core.</description>
+    <jobString>Removing water of tranquility core.</jobString>
+    <removesHediff>PA_Hediff_CoreWater</removesHediff>
+    <uiIconThing>PA_CoreWater</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreMercury</defName>
+    <label>install mercury core</label>
+    <description>Seat a mercury core beside the patient's heart.</description>
+    <jobString>Installing mercury core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreMercury</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreMercury</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreMercury</addsHediff>
+    <uiIconThing>PA_CoreMercury</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreMercury</defName>
+    <label>remove mercury core</label>
+    <description>Extract the mercury core.</description>
+    <jobString>Removing mercury core.</jobString>
+    <removesHediff>PA_Hediff_CoreMercury</removesHediff>
+    <uiIconThing>PA_CoreMercury</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreArcane</defName>
+    <label>install arcane core</label>
+    <description>Seat an arcane core beside the patient's heart.</description>
+    <jobString>Installing arcane core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreArcane</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreArcane</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreArcane</addsHediff>
+    <uiIconThing>PA_CoreArcane</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreArcane</defName>
+    <label>remove arcane core</label>
+    <description>Extract the arcane core.</description>
+    <jobString>Removing arcane core.</jobString>
+    <removesHediff>PA_Hediff_CoreArcane</removesHediff>
+    <uiIconThing>PA_CoreArcane</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreChaos</defName>
+    <label>install chaos core</label>
+    <description>Seat a chaos core beside the patient's heart.</description>
+    <jobString>Installing chaos core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreChaos</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreChaos</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreChaos</addsHediff>
+    <uiIconThing>PA_CoreChaos</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreChaos</defName>
+    <label>remove chaos core</label>
+    <description>Extract the chaos core.</description>
+    <jobString>Removing chaos core.</jobString>
+    <removesHediff>PA_Hediff_CoreChaos</removesHediff>
+    <uiIconThing>PA_CoreChaos</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreCryo</defName>
+    <label>install cryo core</label>
+    <description>Seat a cryo core beside the patient's heart.</description>
+    <jobString>Installing cryo core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreCryo</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreCryo</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreCryo</addsHediff>
+    <uiIconThing>PA_CoreCryo</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreCryo</defName>
+    <label>remove cryo core</label>
+    <description>Extract the cryo core.</description>
+    <jobString>Removing cryo core.</jobString>
+    <removesHediff>PA_Hediff_CoreCryo</removesHediff>
+    <uiIconThing>PA_CoreCryo</uiIconThing>
+  </RecipeDef>
+</Defs>

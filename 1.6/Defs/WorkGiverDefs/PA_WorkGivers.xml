@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Auto-mend: a pawn whose attuned core makes the cannon mend (water of
+       tranquility → colonists and animals, mercury → colony mechs) treats
+       damaged faction pawns as Doctor work — walks into range and shoots
+       them better. Building repair stays manual-target-only. Toggleable via
+       a gizmo on the bearer (HediffComp_AutoMendToggle on the cannon).
+       Priority sits below real tending and patient feeding so it never
+       preempts a doctor's hands when medicine is what's needed. -->
+  <WorkGiverDef>
+    <defName>PA_EltexAutoMend</defName>
+    <label>mend with eltex bolts</label>
+    <giverClass>PsychicAugmentics.WorkGiver_EltexAutoMend</giverClass>
+    <workType>Doctor</workType>
+    <verb>mend</verb>
+    <gerund>eltex-mending</gerund>
+    <priorityInType>60</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+      <li>Sight</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

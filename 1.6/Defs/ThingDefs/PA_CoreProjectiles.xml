@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="PA_CoreBoltBase" Abstract="True">
+    <thingClass>Bullet</thingClass>
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(0.25, 0.55)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_ToxBolt</defName>
+    <label>tox bolt</label>
+    <graphicData>
+      <color>(0.35, 0.9, 0.3)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_ToxBolt</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_HeatBolt</defName>
+    <label>heat bolt</label>
+    <graphicData>
+      <color>(1, 0.45, 0.15)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_HeatBolt</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_LightningBolt</defName>
+    <label>lightning bolt</label>
+    <graphicData>
+      <color>(1, 0.9, 0.25)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_LightningBolt</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <speed>90</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_TranquilBolt</defName>
+    <label>tranquil bolt</label>
+    <graphicData>
+      <color>(0.3, 0.8, 1)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_TranquilBolt</damageDef>
+      <!-- heal per bolt before sensitivity scaling -->
+      <damageAmountBase>12</damageAmountBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_MercuryBolt</defName>
+    <label>mercury bolt</label>
+    <graphicData>
+      <color>(0.8, 0.85, 0.9)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_MercuryBolt</damageDef>
+      <!-- mend per bolt before sensitivity scaling; buildings get x3 -->
+      <damageAmountBase>12</damageAmountBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_ChaosBolt</defName>
+    <label>chaos bolt</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <color>(0.9, 0.15, 0.2)</color>
+      <drawSize>(0.4, 0.7)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_ChaosBlast</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>60</speed>
+      <explosionRadius>1.5</explosionRadius>
+      <explosionChanceToStartFire>0.85</explosionChanceToStartFire>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.4</preExplosionSpawnChance>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_CryoBolt</defName>
+    <label>cryo bolt</label>
+    <graphicData>
+      <color>(0.6, 0.9, 1)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_CryoBolt</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+</Defs>

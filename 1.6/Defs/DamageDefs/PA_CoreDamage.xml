@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Tox: main hit plus a refreshed 3s body-size-scaled DoT -->
+  <DamageDef Class="PsychicAugmentics.PA_DotDamageDef">
+    <defName>PA_ToxBolt</defName>
+    <label>tox bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexTox</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <dotHediff>PA_ToxBurn</dotHediff>
+    <dotSeconds>3</dotSeconds>
+  </DamageDef>
+
+  <!-- Ticking damage dealt by the tox DoT itself: internal rot, no armor -->
+  <DamageDef>
+    <defName>PA_ToxSear</defName>
+    <label>necrotic seep</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <hediff>Cut</hediff>
+    <harmsHealth>true</harmsHealth>
+    <canInterruptJobs>false</canInterruptJobs>
+    <makesBlood>false</makesBlood>
+  </DamageDef>
+
+  <!-- Heat: main hit plus the shooter's vented entropy as Burn -->
+  <DamageDef Class="PsychicAugmentics.PA_HeatDamageDef">
+    <defName>PA_HeatBolt</defName>
+    <label>heat bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexHeat</workerClass>
+    <hediff>Burn</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <entropyVentPerHit>8</entropyVentPerHit>
+    <burnPerEntropy>0.75</burnPerEntropy>
+  </DamageDef>
+
+  <!-- Lightning: main hit plus a mildly-scaling EMP burst -->
+  <DamageDef Class="PsychicAugmentics.PA_EltexDamageDef">
+    <defName>PA_LightningBolt</defName>
+    <label>lightning bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexBolt</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <extraDamage>EMP</extraDamage>
+    <extraDamageAmount>12</extraDamageAmount>
+    <extraDamageExponent>0.35</extraDamageExponent>
+  </DamageDef>
+
+  <!-- Water of Tranquility: heals fresh injuries on living targets -->
+  <DamageDef Class="PsychicAugmentics.PA_MendDamageDef">
+    <defName>PA_TranquilBolt</defName>
+    <label>tranquil bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexMend</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>false</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <healFlesh>true</healFlesh>
+  </DamageDef>
+
+  <!-- Mercury: mends mechanoids and repairs structures -->
+  <DamageDef Class="PsychicAugmentics.PA_MendDamageDef">
+    <defName>PA_MercuryBolt</defName>
+    <label>mercury bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexMend</workerClass>
+    <hediff>Gunshot</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>false</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <healNonFleshPawns>true</healNonFleshPawns>
+    <repairBuildings>true</repairBuildings>
+    <buildingRepairFactor>3</buildingRepairFactor>
+  </DamageDef>
+
+  <!-- Chaos: explosive, ignites terrain (fire chance on the projectile) -->
+  <DamageDef Class="PsychicAugmentics.PA_EltexDamageDef">
+    <defName>PA_ChaosBlast</defName>
+    <label>chaos blast</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexBolt</workerClass>
+    <hediff>Burn</hediff>
+    <isRanged>true</isRanged>
+    <isExplosive>true</isExplosive>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <explosionColorCenter>(1, 0.3, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.9, 0.5, 0.2)</explosionColorEdge>
+    <sensitivityExponent>0.75</sensitivityExponent>
+  </DamageDef>
+
+  <!-- Cryo: main hit plus stacking, fast-decaying chill -->
+  <DamageDef Class="PsychicAugmentics.PA_CryoDamageDef">
+    <defName>PA_CryoBolt</defName>
+    <label>cryo bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexCryo</workerClass>
+    <hediff>Frostbite</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <chillHediff>PA_CryoChill</chillHediff>
+    <severityPerHit>0.12</severityPerHit>
+  </DamageDef>
+</Defs>

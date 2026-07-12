@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>PA_EltexAutoMend</defName>
+    <driverClass>PsychicAugmentics.JobDriver_EltexAutoMend</driverClass>
+    <reportString>mending TargetA with eltex bolts.</reportString>
+  </JobDef>
+
+  <JobDef>
+    <defName>PA_UseVisionInducer</defName>
+    <driverClass>PsychicAugmentics.JobDriver_UseVisionInducer</driverClass>
+    <reportString>experiencing psychic visions.</reportString>
+    <joyDuration>2500</joyDuration>
+    <joyGainRate>1</joyGainRate>
+    <joyMaxParticipants>1</joyMaxParticipants>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+
+  <JobDef>
+    <defName>PA_UseTraumaEngine</defName>
+    <driverClass>PsychicAugmentics.JobDriver_UseTraumaEngine</driverClass>
+    <reportString>being subjected to psychic hallucinations.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

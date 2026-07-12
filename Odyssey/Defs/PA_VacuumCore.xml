@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Vacuum core: only loads with Odyssey active (see LoadFolders.xml),
+       since VacuumBurn damage is an Odyssey def. Knockback distance is
+       divided by body size, so bosses cannot be displacement-locked. -->
+
+  <ThingDef ParentName="PA_CoreBase">
+    <defName>PA_CoreVacuum</defName>
+    <label>vacuum core</label>
+    <description>An eltex sphere containing, as far as any instrument can tell, nothing at all — its hollow shell pressed from gravlite paneling. Attuned to an eltex arm cannon, its bolts burn like hard vacuum and hurl lighter victims backward — the massive barely shift. Implanted without a cannon to regulate it, the core discharges into the bearer's own nervous system.</description>
+    <costList>
+      <GravlitePanel>4</GravlitePanel>
+    </costList>
+    <graphicData>
+      <texPath>PA/Cores/CoreVacuum</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreVacuum</defName>
+    <label>vacuum core</label>
+    <labelNoun>a vacuum core</labelNoun>
+    <description>An eltex vacuum core seated near the heart. Attuned to an eltex arm cannon, its bolts deal vacuum burns and knock targets back.</description>
+    <defaultLabelColor>(0.2, 0.2, 0.6)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreVacuum</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_VacuumBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <ThingDef ParentName="PA_CoreBoltBase">
+    <defName>PA_Projectile_VacuumBolt</defName>
+    <label>vacuum bolt</label>
+    <graphicData>
+      <color>(0.2, 0.2, 0.6)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>PA_VacuumBolt</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+
+  <DamageDef Class="PsychicAugmentics.PA_VacuumDamageDef">
+    <defName>PA_VacuumBolt</defName>
+    <label>vacuum bolt</label>
+    <workerClass>PsychicAugmentics.DamageWorker_EltexVacuum</workerClass>
+    <hediff>Burn</hediff>
+    <isRanged>true</isRanged>
+    <harmsHealth>true</harmsHealth>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Heat</armorCategory>
+    <sensitivityExponent>0.75</sensitivityExponent>
+    <extraDamage>VacuumBurn</extraDamage>
+    <extraDamageAmount>6</extraDamageAmount>
+    <extraDamageExponent>0.35</extraDamageExponent>
+    <pushCells>2.5</pushCells>
+  </DamageDef>
+
+  <RecipeDef ParentName="PA_InstallCoreBase">
+    <defName>PA_InstallCoreVacuum</defName>
+    <label>install vacuum core</label>
+    <description>Seat a vacuum core beside the patient's heart.</description>
+    <jobString>Installing vacuum core.</jobString>
+    <ingredients>
+      <li>
+        <filter><thingDefs><li>PA_CoreVacuum</li></thingDefs></filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter><thingDefs><li>PA_CoreVacuum</li></thingDefs></fixedIngredientFilter>
+    <addsHediff>PA_Hediff_CoreVacuum</addsHediff>
+    <uiIconThing>PA_CoreVacuum</uiIconThing>
+  </RecipeDef>
+  <RecipeDef ParentName="PA_RemoveCoreBase">
+    <defName>PA_RemoveCoreVacuum</defName>
+    <label>remove vacuum core</label>
+    <description>Extract the vacuum core.</description>
+    <jobString>Removing vacuum core.</jobString>
+    <removesHediff>PA_Hediff_CoreVacuum</removesHediff>
+    <uiIconThing>PA_CoreVacuum</uiIconThing>
+  </RecipeDef>
+</Defs>

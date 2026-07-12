@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Core implant hediffs. Hediff_EltexCore keeps severity at 1 while the
+       bearer has an eltex arm cannon (attuned, inert) and at 0.1 otherwise
+       (unregulated: psychic discharge — pain and clouded consciousness).
+       Each def's PA_CoreExtension tells the cannon what to fire. -->
+  <HediffDef Name="PA_CoreHediffBase" ParentName="ImplantHediffBase" Abstract="True">
+    <hediffClass>PsychicAugmentics.Hediff_EltexCore</hediffClass>
+    <initialSeverity>0.1</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+    <everCurableByItem>false</everCurableByItem>
+    <stages>
+      <li>
+        <label>unregulated</label>
+        <painOffset>0.35</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>attuned</label>
+        <minSeverity>0.9</minSeverity>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreTox</defName>
+    <label>tox core</label>
+    <labelNoun>a tox core</labelNoun>
+    <description>An eltex tox core seated near the heart. Attuned to an eltex arm cannon, its bolts poison whatever they strike.</description>
+    <defaultLabelColor>(0.35, 0.9, 0.3)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreTox</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_ToxBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreHeat</defName>
+    <label>heat core</label>
+    <labelNoun>a heat core</labelNoun>
+    <description>An eltex heat core seated near the heart. Attuned to an eltex arm cannon, each bolt vents the bearer's psychic entropy into the target as heat.</description>
+    <defaultLabelColor>(1, 0.45, 0.15)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreHeat</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_HeatBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreLightning</defName>
+    <label>lightning core</label>
+    <labelNoun>a lightning core</labelNoun>
+    <description>An eltex lightning core seated near the heart. Attuned to an eltex arm cannon, its bolts pulse EMP on impact.</description>
+    <defaultLabelColor>(1, 0.9, 0.25)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreLightning</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_LightningBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreWater</defName>
+    <label>water of tranquility core</label>
+    <labelNoun>a water of tranquility core</labelNoun>
+    <description>An eltex water of tranquility core seated near the heart. Attuned to an eltex arm cannon, its bolts close fresh wounds on living allies instead of harming.</description>
+    <defaultLabelColor>(0.3, 0.8, 1)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreWater</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_TranquilBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreMercury</defName>
+    <label>mercury core</label>
+    <labelNoun>a mercury core</labelNoun>
+    <description>An eltex mercury core seated near the heart. Attuned to an eltex arm cannon, its bolts mend mechanoids and repair structures instead of harming.</description>
+    <defaultLabelColor>(0.8, 0.85, 0.9)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreMercury</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_MercuryBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreArcane</defName>
+    <label>arcane core</label>
+    <labelNoun>an arcane core</labelNoun>
+    <description>An eltex arcane core seated near the heart. Attuned to an eltex arm cannon, its bolts bend subtly toward their targets, converting a portion of misses into hits.</description>
+    <defaultLabelColor>(0.7, 0.4, 1)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreArcane</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <!-- no projectileOverride: fires the standard eltex bolt, guided -->
+        <missConversion>0.25</missConversion>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreChaos</defName>
+    <label>chaos core</label>
+    <labelNoun>a chaos core</labelNoun>
+    <description>An eltex chaos core seated near the heart. Attuned to an eltex arm cannon, its bolts detonate on impact and start fires.</description>
+    <defaultLabelColor>(0.9, 0.15, 0.2)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreChaos</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_ChaosBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <HediffDef ParentName="PA_CoreHediffBase">
+    <defName>PA_Hediff_CoreCryo</defName>
+    <label>cryo core</label>
+    <labelNoun>a cryo core</labelNoun>
+    <description>An eltex cryo core seated near the heart. Attuned to an eltex arm cannon, its bolts stack a fast-fading chill that slows movement and manipulation.</description>
+    <defaultLabelColor>(0.6, 0.9, 1)</defaultLabelColor>
+    <spawnThingOnRemoved>PA_CoreCryo</spawnThingOnRemoved>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_CoreExtension">
+        <requiresCannon>PA_Hediff_EltexArmCannon</requiresCannon>
+        <projectileOverride>PA_Projectile_CryoBolt</projectileOverride>
+      </li>
+    </modExtensions>
+  </HediffDef>
+
+  <!-- ===== Effect hediffs applied to targets ===== -->
+
+  <!-- Tox DoT: refreshed (never stacked) by hits; the PercentDot comp queues
+       body-size-scaled damage each second via the game component. -->
+  <HediffDef>
+    <defName>PA_ToxBurn</defName>
+    <label>necrotic seep</label>
+    <description>Eltex-borne poison dissolving living tissue. Brief, but re-application keeps the rot going.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.35, 0.9, 0.3)</defaultLabelColor>
+    <isBad>true</isBad>
+    <maxSeverity>1</maxSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <li>
+        <painOffset>0.05</painOffset>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>180</disappearsAfterTicks>
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="PsychicAugmentics.HediffCompProperties_PercentDot">
+        <damagePerSecondPerBodySize>2</damagePerSecondPerBodySize>
+        <damage>PA_ToxSear</damage>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Cryo chill: stacks per hit up to maxSeverity, decays fast (about
+       35 severity/day = a full stack gone in ~40 in-game seconds). -->
+  <HediffDef>
+    <defName>PA_CryoChill</defName>
+    <label>eltex chill</label>
+    <description>Psychically leached warmth. Muscles stiffen and slow until the cold fades.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.6, 0.9, 1)</defaultLabelColor>
+    <isBad>true</isBad>
+    <maxSeverity>1</maxSeverity>
+    <scenarioCanAdd>false</scenarioCanAdd>
+    <stages>
+      <li>
+        <label>chilled</label>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.10</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.05</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>stiffening</label>
+        <minSeverity>0.35</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.25</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>rimed</label>
+        <minSeverity>0.7</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.45</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.30</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-35</severityPerDay>
+      </li>
+    </comps>
+  </HediffDef>
+</Defs>

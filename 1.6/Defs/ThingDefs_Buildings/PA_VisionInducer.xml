@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>PA_VisionInducer</defName>
+    <label>psychic vision inducer</label>
+    <description>An eltex resonance chamber tuned for pleasure instead of shock. An occupant drifts through an hour of engineered psychic reverie — deeply restorative recreation that occasionally crystallizes into genuine inspiration. The same architecture as the trauma engine, with the safety limiters left in.</description>
+    <thingClass>PsychicAugmentics.Building_VisionInducer</thingClass>
+    <graphicData>
+      <texPath>PA/VisionInducer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <size>(2, 2)</size>
+    <rotatable>false</rotatable>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <designationCategory>Joy</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>4</Beauty>
+      <JoyGainFactor>1</JoyGainFactor>
+    </statBases>
+    <building>
+      <joyKind>Meditative</joyKind>
+    </building>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+      <VPE_Eltex>4</VPE_Eltex>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <researchPrerequisites>
+      <li>PA_VisionInduction</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li Class="PsychicAugmentics.PA_VisionInducerExtension">
+        <inspirationChance>0.15</inspirationChance>
+        <durationTicks>2500</durationTicks>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <JoyGiverDef>
+    <defName>PA_UseVisionInducer</defName>
+    <giverClass>JoyGiver_InteractBuildingInteractionCell</giverClass>
+    <baseChance>2</baseChance>
+    <thingDefs>
+      <li>PA_VisionInducer</li>
+    </thingDefs>
+    <jobDef>PA_UseVisionInducer</jobDef>
+    <joyKind>Meditative</joyKind>
+    <requiredCapacities>
+      <li>Consciousness</li>
+    </requiredCapacities>
+  </JoyGiverDef>
+</Defs>

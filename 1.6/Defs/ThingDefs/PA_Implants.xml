@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- BodyPartBionicBase provides: item basics, BodyPartsBionic storage
+       category, trade tags, HealthItem graphic, and a recipeMaker preset
+       (FabricationBench, Crafting 8, unfinished item) that auto-generates
+       the crafting recipe from costList — no separate RecipeDef needed. -->
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>PA_ImplantEltexArmCannon</defName>
+    <label>eltex arm cannon</label>
+    <description>A surgically-installed eltex emitter assembly. Integrated into a shoulder, it provides a built-in ranged attack that channels psychic sensitivity into focused bolts of piercing force. Effectiveness scales with the bearer's psychic sensitivity, without limit — but each additional measure of sensitivity contributes less than the last.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>PA_InstallEltexArmCannon</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>PA/EltexArmCannon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <costList>
+      <VPE_Eltex>8</VPE_Eltex>
+      <Plasteel>20</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <statBases>
+      <WorkToMake>50000</WorkToMake>
+      <Mass>2</Mass>
+      <MarketValue>1800</MarketValue>
+    </statBases>
+    <!-- Full block: overriding recipeMaker does not reliably merge with the
+         parent's, so a partial override loses recipeUsers and the generated
+         recipe attaches to no bench -->
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+      <researchPrerequisite>PA_EltexAugmentics</researchPrerequisite>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <displayPriority>300</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

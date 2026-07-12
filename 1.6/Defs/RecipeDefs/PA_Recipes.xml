@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Crafting recipe is auto-generated from the ThingDef's recipeMaker.
+       Surgery bases provide: Recipe_InstallImplant/Recipe_RemoveImplant
+       workers, medicine ingredients, Medicine 5 skill, anesthesia and
+       surgery-failure handling via SurgeryFlesh. -->
+
+  <RecipeDef ParentName="SurgeryInstallImplantBase">
+    <defName>PA_InstallEltexArmCannon</defName>
+    <label>install eltex arm cannon</label>
+    <description>Surgically integrate an eltex arm cannon into the patient's shoulder, bonding the emitter with the shoulder joint and nerve endings to allow psychically-driven fire.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PA_ImplantEltexArmCannon</ThingDef>
+      <HediffDef>PA_Hediff_EltexArmCannon</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing eltex arm cannon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PA_ImplantEltexArmCannon</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PA_ImplantEltexArmCannon</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Shoulder</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PA_Hediff_EltexArmCannon</addsHediff>
+    <uiIconThing>PA_ImplantEltexArmCannon</uiIconThing>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>PA_RemoveEltexArmCannon</defName>
+    <label>remove eltex arm cannon</label>
+    <description>Surgically extract the eltex arm cannon from the patient's shoulder.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PA_ImplantEltexArmCannon</ThingDef>
+      <HediffDef>PA_Hediff_EltexArmCannon</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing eltex arm cannon.</jobString>
+    <removesHediff>PA_Hediff_EltexArmCannon</removesHediff>
+    <uiIconThing>PA_ImplantEltexArmCannon</uiIconThing>
+    <appliedOnFixedBodyParts>
+      <li>Shoulder</li>
+    </appliedOnFixedBodyParts>
+  </RecipeDef>
+</Defs>

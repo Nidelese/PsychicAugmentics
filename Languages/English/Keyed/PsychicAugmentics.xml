@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PA_VoidMutated>warped</PA_VoidMutated>
+  <PA_FaradayToggleLabel>ground faraday cage</PA_FaradayToggleLabel>
+  <PA_FaradayToggleDesc>Ground the eltex faraday cage. While grounded, psychic sensitivity is capped at 15% regardless of everything else — muting psychic drones, lances and hostile psycasts, but also crippling this pawn's own psycasting and eltex weaponry.</PA_FaradayToggleDesc>
+  <PA_FaradayCapExplanation>Eltex faraday cage (grounded): capped at {0}</PA_FaradayCapExplanation>
+  <PA_AutoMendLabel>auto-mend</PA_AutoMendLabel>
+  <PA_AutoMendDesc>When enabled and assigned to Doctor work, this pawn will automatically seek out targets their attuned core can mend — injured colonists and animals with a water of tranquility core, damaged mechs with a mercury core — and treat them with eltex bolts. Buildings must always be targeted manually.</PA_AutoMendDesc>
+  <PA_UseTraumaEngineOption>undergo psionic awakening</PA_UseTraumaEngineOption>
+  <PA_UseVisionInducerOption>experience psychic visions</PA_UseVisionInducerOption>
+  <PA_VisionInspirationReason>{PAWN_labelShort}'s psychic reverie crystallized into sudden clarity.</PA_VisionInspirationReason>
+  <PA_TraumaAwakeningLabel>Psionic awakening</PA_TraumaAwakeningLabel>
+  <PA_TraumaAwakeningText>{PAWN_labelShort}'s screams changed pitch halfway through the session. Something in {PAWN_possessive} mind has cracked open: {PAWN_pronoun} has gained a level of psylink.</PA_TraumaAwakeningText>
+  <PA_TraumaNoAwakening>{PAWN_labelShort} endured the hallucinations, but nothing awakened.</PA_TraumaNoAwakening>
+</LanguageData>
