@@ -11,7 +11,13 @@ namespace PsychicAugmentics
         private static readonly Queue<(Pawn pawn, DamageDef damage, float amount)> queue
             = new Queue<(Pawn, DamageDef, float)>();
 
-        public PA_GameComponent(Game game) { }
+        public PA_GameComponent(Game game)
+        {
+            // Static state survives returning to the main menu and starting a
+            // new game in the same process. Never let a queued hit retain a
+            // pawn from the previous save.
+            queue.Clear();
+        }
 
         public static void QueueDamage(Pawn pawn, DamageDef damage, float amount) =>
             queue.Enqueue((pawn, damage, amount));
