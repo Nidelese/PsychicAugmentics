@@ -16,9 +16,20 @@ PREFIX = "DS_" if ROOT.name == "Dragonship" else "PA_"
 NAMESPACE = "Dragonship" if ROOT.name == "Dragonship" else "PsychicAugmentics"
 
 
+def game_versions():
+    """Versions this release ships, from LoadFolders.xml (<v1.6>, <v1.7>...)."""
+    path = ROOT / "LoadFolders.xml"
+    try:
+        tags = [node.tag for node in ET.parse(path).getroot()]
+    except (OSError, ET.ParseError):
+        return ["1.6"]
+    versions = [tag[1:] for tag in tags if re.fullmatch(r"v\d+\.\d+", tag)]
+    return versions or ["1.6"]
+
+
 def xml_files():
     paths = [ROOT / "About" / "About.xml", ROOT / "LoadFolders.xml"]
-    for folder in ("1.6", "Anomaly", "Odyssey"):
+    for folder in ("Common", *game_versions(), "Anomaly", "Odyssey"):
         base = ROOT / folder
         if base.exists():
             paths.extend(base.rglob("*.xml"))
@@ -123,10 +134,13 @@ def main():
 
     load_folders = ROOT / "LoadFolders.xml"
     if load_folders in trees:
-        for node in trees[load_folders].getroot().findall("./v1.6/li"):
-            folder = (node.text or "").strip()
-            if folder and folder != "/" and not (ROOT / folder).is_dir():
-                errors.append(f"LoadFolders.xml references missing folder {folder}")
+        for version in game_versions():
+            for node in trees[load_folders].getroot().findall(f"./v{version}/li"):
+                folder = (node.text or "").strip()
+                if folder and folder != "/" and not (ROOT / folder).is_dir():
+                    errors.append(
+                        f"LoadFolders.xml v{version} references missing folder {folder}"
+                    )
 
     keyed = {}
     language = ROOT / "Languages" / "English" / "Keyed"
@@ -153,8 +167,9 @@ def main():
         if metadata.findtext("packageId") is None:
             errors.append("About.xml has no packageId")
         versions = [n.text for n in metadata.findall("./supportedVersions/li")]
-        if "1.6" not in versions:
-            errors.append("About.xml does not declare RimWorld 1.6")
+        for version in game_versions():
+            if version not in versions:
+                errors.append(f"About.xml does not declare RimWorld {version}")
         dependency_ids = {
             (node.text or "").strip().lower()
             for node in metadata.findall("./modDependencies/li/packageId")
@@ -168,9 +183,16 @@ def main():
         for missing in sorted(expected - dependency_ids):
             errors.append(f"About.xml is missing hard dependency {missing}")
 
-    assemblies = list((ROOT / "1.6" / "Assemblies").glob("*.dll"))
-    if len(assemblies) != 1 or assemblies[0].stat().st_size == 0:
-        errors.append(f"expected one non-empty release DLL, found {len(assemblies)}")
+    for version in game_versions():
+        assemblies = list((ROOT / version / "Assemblies").glob("*.dll"))
+        if len(assemblies) != 1 or assemblies[0].stat().st_size == 0:
+            errors.append(
+                f"{version}: expected one non-empty release DLL, found {len(assemblies)}"
+            )
+        # Defs must not live inside a version folder, or the other version
+        # silently loses them (they belong in Common/).
+        if (ROOT / "Common").is_dir() and (ROOT / version / "Defs").exists():
+            errors.append(f"{version}/Defs exists; shared Defs belong in Common/")
 
     if errors:
         print(f"FAIL: {len(errors)} release validation error(s)")

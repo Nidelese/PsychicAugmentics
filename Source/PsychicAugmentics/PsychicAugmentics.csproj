@@ -1,19 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- One `dotnet build` produces both game versions:
+         net48    -> 1.6/Assemblies  (RimWorld 1.6, Unity/Mono)
+         net10.0  -> 1.7/Assemblies  (RimWorld 1.7, Waylith/.NET 10)
+       Shared Defs live in Common/; LoadFolders.xml maps each version. -->
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworks>net48;net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>PsychicAugmentics</RootNamespace>
     <AssemblyName>PsychicAugmentics</AssemblyName>
-    <OutputPath>..\..\1.6\Assemblies\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <DebugType>none</DebugType>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <OutputPath>..\..\1.6\Assemblies\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <OutputPath>..\..\1.7\Assemblies\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.*" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <!-- 1.7 is still Steam's unstable beta; float to the newest unstable ref. -->
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.7.*-*" />
   </ItemGroup>
 
 </Project>
